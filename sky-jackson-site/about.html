@@ -1,0 +1,124 @@
+---
+layout: default
+title: About
+permalink: /about/
+nav: about
+---
+<div class="shell">
+
+  <section class="section about-intro">
+    <div class="prose">
+      <h1>About</h1>
+      <p class="page-lede">
+        I'm Sky Jackson. Digital Pour-Over is where I work out what happened to
+        my attention — how devices that once felt like magic quietly became
+        appliances, and what it takes to notice them again. The coffee metaphor
+        isn't decoration. I learned to slow down over a pour-over first, and
+        then went looking for the same thing everywhere else.
+      </p>
+      <p>
+        By day I'm the Communications Coordinator and photographer for New
+        Mexico's Early Childhood Education and Care Department, which means I
+        spend my weeks trying to say complicated things clearly to families,
+        providers, and legislators — three audiences who share almost no
+        vocabulary. Most of what I've learned about writing, I learned from
+        watching those messages fail and figuring out why.
+      </p>
+      <p>
+        I studied philosophy at UNM on the pre-law track, which is a long way of
+        saying I spent four years being told, in writing, that my sentences did
+        not mean what I thought they meant. That turned out to be the job. Before
+        this I taught digital media arts, ran recruitment and outreach for a
+        nonprofit, managed social accounts, and freelanced — shooting, writing,
+        and designing for whoever needed it that month. On paper it reads as
+        scattered. In practice it was the same work every time: find out what
+        somebody actually needs to know, then get it to them before their
+        attention runs out.
+      </p>
+      <p>
+        Those two things are less separate than they look. The job is about
+        holding somebody's attention long enough to hand them something useful.
+        The blog is about noticing what happened to my own. Expect posts on the
+        tools I've torn apart and rebuilt, the ones I abandoned, and a running
+        account of whatever I am currently getting wrong.
+      </p>
+    </div>
+
+    {% if site.portrait and site.portrait != "" %}
+    <figure class="about-portrait">
+      <img src="{{ site.portrait | relative_url }}" alt="Portrait of {{ site.author.name }}">
+      <figcaption>{{ site.portrait_caption }}</figcaption>
+    </figure>
+    {% endif %}
+  </section>
+
+  {% if site.show_work %}
+  <section class="section">
+    <h2>Things I've made</h2>
+    <p class="page-lede prose">
+      The case studies and the craft writing both live on the
+      <a href="{{ '/work/' | relative_url }}">work page</a>.
+    </p>
+  </section>
+  {% endif %}
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Where I've worked</h2>
+      {% if site.author.resume_pdf and site.author.resume_pdf != "" %}
+        <a href="{{ site.author.resume_pdf | relative_url }}">The tidy PDF version</a>
+      {% endif %}
+    </div>
+
+    {% for job in site.data.resume.work %}
+      <div class="entry">
+        <p class="entry__when">{{ job.when }}</p>
+        <div>
+          <h3 class="entry__role">{{ job.role }}</h3>
+          <p class="entry__org">{{ job.org }}{% if job.where %}, {{ job.where }}{% endif %}</p>
+          <ul>
+            {% for point in job.bullets %}<li>{{ point }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% for school in site.data.resume.education %}
+      <div class="entry">
+        <p class="entry__when">{{ school.when }}</p>
+        <div>
+          <h3 class="entry__role">{{ school.credential }}</h3>
+          <p class="entry__org">{{ school.org }}</p>
+        </div>
+      </div>
+    {% endfor %}
+
+    <ul class="skills" style="margin-top:2.25rem;">
+      {% for skill in site.data.resume.skills %}<li>{{ skill }}</li>{% endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Say hello</h2>
+    <p class="page-lede prose">
+      I like hearing from people who read this. Corrections welcome, arguments
+      more so.
+    </p>
+    <ul class="contact-list">
+      {% if site.author.email and site.author.email != "" %}
+        <li><a href="mailto:{{ site.author.email }}"><b>Email</b><em>{{ site.author.email }}</em></a></li>
+      {% endif %}
+      {% if site.author.linkedin and site.author.linkedin != "" %}
+        <li><a href="{{ site.author.linkedin }}"><b>LinkedIn</b><em>The professional paper trail</em></a></li>
+      {% endif %}
+      {% if site.author.instagram and site.author.instagram != "" %}
+        <li><a href="{{ site.author.instagram }}"><b>Instagram</b><em>Photographs, more often</em></a></li>
+      {% endif %}
+      {% if site.author.github and site.author.github != "" %}
+        <li><a href="{{ site.author.github }}"><b>GitHub</b><em>This site, and other tinkering</em></a></li>
+      {% endif %}
+      <li><a href="{{ '/feed.xml' | relative_url }}"><b>RSS</b><em>New posts, no algorithm</em></a></li>
+    </ul>
+  </section>
+
+</div>

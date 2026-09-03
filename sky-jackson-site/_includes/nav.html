@@ -1,0 +1,14 @@
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="{{ '/' | relative_url }}">
+      {{ site.title }}
+      <span>{{ site.author.name }}</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{ '/archive/' | relative_url }}" {% if page.nav == 'archive' %}aria-current="page"{% endif %}>Archive</a>
+      {% if site.show_work %}<a href="{{ '/work/' | relative_url }}" {% if page.nav == 'work' %}aria-current="page"{% endif %}>Work</a>{% endif %}
+      {% if site.show_photographs %}<a href="{{ '/photographs/' | relative_url }}" {% if page.nav == 'photographs' %}aria-current="page"{% endif %}>Photographs</a>{% endif %}
+      <a href="{{ '/about/' | relative_url }}" {% if page.nav == 'about' %}aria-current="page"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>

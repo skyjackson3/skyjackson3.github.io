@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<article class="shell">
+  <header class="post-head prose">
+    <p class="item__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p class="page-lede">{{ page.lede }}</p>{% endif %}
+  </header>
+
+  <div class="post-body prose">
+    {{ content }}
+
+    <div class="post-outro">
+      <p>
+        Written by {{ site.author.name }}. New posts land in
+        <a href="{{ '/feed.xml' | relative_url }}">the RSS feed</a>, and there's
+        more about me <a href="{{ '/about/' | relative_url }}">over here</a>.
+      </p>
+    </div>
+  </div>
+
+  <nav class="post-nav" aria-label="More posts">
+    <span>{% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% endif %}</span>
+    <span>{% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% endif %}</span>
+  </nav>
+</article>

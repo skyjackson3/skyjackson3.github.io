@@ -1,0 +1,39 @@
+---
+layout: default
+title: Photographs
+permalink: /photographs/
+nav: photographs
+sitemap: false
+---
+<div class="shell">
+  <section class="section">
+    <h1>Photographs</h1>
+    <p class="page-lede prose">
+      Some of this is work — events, portraits, classrooms and site visits made
+      for agencies and nonprofits. Some of it is just what I saw that day.
+      Natural light wherever the room allows it.
+    </p>
+
+    <div class="sheet" style="margin-top:2.75rem;">
+      <ul class="frames">
+        {% for shot in site.data.portfolio %}
+          <li class="frame">
+            <button class="frame__shot"
+                    type="button"
+                    data-full="{{ shot.full | default: shot.image | relative_url }}"
+                    data-caption="{{ shot.title }} — {{ shot.meta }}">
+              <span class="frame__number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <img src="{{ shot.image | relative_url }}" alt="{{ shot.alt }}" loading="lazy">
+            </button>
+            <p class="frame__caption">
+              <strong>{{ shot.title }}</strong>
+              <span>{{ shot.meta }}</span>
+            </p>
+          </li>
+        {% endfor %}
+      </ul>
+      <p class="sheet-note">Click any frame to enlarge. Arrow keys move through the sheet.</p>
+    </div>
+  </section>
+</div>
+<script src="{{ '/assets/js/lightbox.js' | relative_url }}" defer></script>

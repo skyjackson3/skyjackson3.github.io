@@ -1,0 +1,92 @@
+# Everything on the résumé section of the About page comes from this file.
+# Add a role by copying a block. Order top to bottom = newest to oldest.
+
+summary: >-
+  Communications professional who builds the systems the work runs on: intake
+  and approval workflows, documented procedures, editorial calendars, and
+  accessibility standards. Currently the de facto project lead for the
+  communications office of a 400-person cabinet-level state department,
+  managing a biweekly bilingual newsletter to roughly 50,000 subscribers, an
+  agency-wide request queue, and the full operations documentation set built to
+  carry the office through a change in administration.
+
+work:
+  - role: Communications Coordinator and Photographer
+    org: New Mexico Early Childhood Education and Care Department
+    where: Santa Fe, New Mexico
+    when: "May 2023 — present"
+    bullets:
+      - "Serve as de facto project lead for a five-person communications office through an extended director vacancy, coordinating deliverables across every division of the department, external partners, and executive review."
+      - "Rebuilt the office's request intake in Smartsheet — a 30-column tracker with automated routing, tiered approvals, and a metrics dashboard — replacing a legacy proprietary system and consolidating every division's requests into one managed queue."
+      - "Led that intake's migration to Freshservice as the department consolidated onto a single service platform, delivering IT a complete handoff package of eight service catalog items with request workflows, routing logic, and accessibility intake fields."
+      - "Designed and documented end-to-end production for the ECECD Briefing, the department's biweekly bilingual newsletter to roughly 50,000 subscribers, codified in a 17-page standard operating procedure covering deadlines, editorial standards, translation, review, and send."
+      - "Authored the department's three-part communications documentation set — Style Guide Quick Reference, Communications Handbook, and Communications Procedures — establishing house style, a declared WCAG 2.1 AA accessibility standard, and role-based routing for every request type."
+      - "Produced a 38-page operational transition guide and five role-specific worksheets to preserve institutional knowledge through the January 2027 change in administration."
+      - "Established the department's accessibility practice: contrast-compliance matrices for the full brand palette, screen reader verification across VoiceOver, TalkBack, and NVDA, and a phased staff rollout plan."
+      - "Rebuilt the agency newsroom's information architecture and produced full HTML design directions; build and maintain program pages in WordPress and Divi, including new pilot program launches."
+      - "Serve as the department's staff photographer, covering agency events, programs, and leadership, and managing the resulting asset library."
+
+  - role: Social Media Specialist
+    org: Kirtland Federal Credit Union
+    where: Albuquerque, New Mexico
+    when: "January 2022 — October 2022"
+    bullets:
+      - "Owned the credit union's social content calendar end to end, from planning through photography, videography, design, and publication."
+      - "Adapted enterprise marketing campaigns for social channels and reported performance across Meta properties, Google Business Profile, LinkedIn, and Yelp."
+      - "Managed all member-facing social correspondence, resolving service inquiries and escalations within brand and compliance guidelines."
+
+  - role: Recruitment, Outreach and Training Manager
+    org: New Mexico Kids Matter
+    where: Albuquerque, New Mexico
+    when: "December 2019 — November 2021"
+    bullets:
+      - "Grew the recruitment and outreach function from a single position into a three-person team, hiring and managing a recruitment coordinator and a training coordinator."
+      - "Recruited, screened, and onboarded ten Court Appointed Special Advocates, carrying each through background investigation, reference review, the full CASA pre-service training curriculum, and sworn appointment by a judge as an officer of the court."
+      - "Owned the organization's marketing strategy, including a full website redesign, a rebuilt social presence, and a multimedia campaign produced with the American Advertising Association."
+      - "Developed a partnership with Albuquerque's Open Space Division to launch a pilot program delivering Eco-Care Kits to children in the state child welfare system."
+
+  - role: Social Media Director
+    org: Buffett's Candies
+    where: Albuquerque, New Mexico
+    when: "June 2019 — February 2022 · concurrent role"
+    bullets:
+      - "Began as a freelance client and was brought onto staff after the initial engagement; grew the account into ownership of the brand's full content operation."
+      - "Created a cohesive visual design language, applied it across every social platform, and extended it to the company's website product photography, aligning web and social under one brand strategy."
+
+  - role: Photographer, Designer and Web Developer
+    org: Independent Creative Practice
+    where: Albuquerque Metro, New Mexico
+    when: "2017 — 2019"
+    bullets:
+      - "Ran a full-time freelance practice built on portrait, school, and wedding photography, with concurrent web design and graphic design work for small-business clients."
+      - "Held a six-month retainer as social media strategist for Pour Vida, an Albuquerque coffee company, building brand strategy around its identity as a small woman-owned business and supporting its expansion into local grocery retail."
+      - "Seasonal contract work with Kenneth Brown Photography shooting school portraits and supporting student yearbook production."
+      - "Continue to take selective client work on the strength of relationships built in this period, including a return to Buffett's Candies in October 2025 to produce a retirement tribute film."
+
+  - role: Digital Media Arts Instructor
+    org: School of Dreams Academy
+    where: Los Lunas, New Mexico
+    when: "February 2013 — January 2017"
+    bullets:
+      - "Taught photography, videography, and graphic design; co-led the art department and authored the school's visual arts standards and benchmarks."
+      - "Founded and directed a student and staff social media team responsible for the school's channels and web content, after serving as design advisor on the school website build."
+      - "Served as digital media arts liaison to the school's dual enrollment program with the University of New Mexico, co-designing dual-credit courses with university faculty."
+
+education:
+  - credential: Bachelor of Arts, Philosophy — Pre-Law Concentration
+    org: University of New Mexico
+    when: "2012"
+
+skills:
+  - Project and program coordination
+  - Workflow design and automation
+  - SOP and process documentation
+  - Editorial production management
+  - Digital accessibility (WCAG 2.1 AA)
+  - Web content management
+  - Email marketing
+  - Photography and visual content
+  - Smartsheet and Freshservice
+  - WordPress and Divi
+  - Adobe Creative Cloud
+  - Mailchimp

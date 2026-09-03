@@ -1,0 +1,91 @@
+# ---------------------------------------------------------------------------
+# Site identity — edit these first.
+# ---------------------------------------------------------------------------
+title: Digital Pour-Over
+tagline: Notes from Sky Jackson
+description: >-
+  Digital Pour-Over — Sky Jackson on technology, attention, and the ritual of
+  slowing down. Plus communications work, editorial systems, and photography.
+
+# Your published address. For a repo named <username>.github.io, leave baseurl
+# empty. For a project repo (e.g. github.com/you/portfolio), set:
+#   baseurl: "/portfolio"
+url: "https://digitalpourover.com"
+baseurl: ""
+
+# ---------------------------------------------------------------------------
+# Contact and profiles — anything left blank is simply not rendered.
+# ---------------------------------------------------------------------------
+author:
+  name: Sky Jackson
+  role: Communications Coordinator and Photographer
+  location: Rio Rancho, New Mexico
+  email: "skyjack3@me.com"
+  linkedin: "https://www.linkedin.com/in/skyjackson"
+  instagram: "" # photography account, if you want it public
+  github: "https://github.com/skyjackson3"
+  resume_pdf: "" # e.g. /assets/sky-jackson-resume.pdf
+
+# The photograph on the About page. Drop a real file in assets/img/ and put the
+# path here. Portrait orientation works best. Left blank = block not rendered.
+portrait: ""
+portrait_caption: ""
+
+# How many posts show on the home page before the archive takes over.
+home_posts: 12
+
+# Pre-launch guard. While true, EVERY page asks search engines not to index it.
+noindex: false
+
+# Section launch switches. While false, that section is hidden from the nav,
+# kept out of the sitemap, and marked noindex — the page still builds, so you
+# can preview it locally. Flip to true the day the section is ready.
+show_work: false
+show_photographs: false
+
+# ---------------------------------------------------------------------------
+# Build settings — you rarely need to touch anything below.
+# ---------------------------------------------------------------------------
+permalink: /:year/:month/:title/
+timezone: America/Denver
+markdown: kramdown
+paginate: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: /feed.xml
+
+collections:
+  work:
+    output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: work
+      nav: work
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - tools/
+  - vendor/
+  - .sass-cache/
+  - .jekyll-cache/
