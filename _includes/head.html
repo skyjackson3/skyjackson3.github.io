@@ -1,0 +1,10 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5ede1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Literata:opsz,wght@7..72,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+{% assign hide = false %}{% if site.noindex %}{% assign hide = true %}{% endif %}{% if page.nav == 'work' and site.show_work != true %}{% assign hide = true %}{% endif %}{% if page.nav == 'photographs' and site.show_photographs != true %}{% assign hide = true %}{% endif %}{% if hide %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% seo %}

@@ -1,0 +1,46 @@
+---
+layout: default
+title: Digital Pour-Over
+nav: home
+---
+
+{% assign flagged = site.posts | where: "featured", true | first %}
+{% if flagged %}{% assign lead = flagged %}{% else %}{% assign lead = site.posts.first %}{% endif %}
+
+<div class="shell">
+
+  {% if lead %}
+  <section class="featured">
+    <a class="featured__link" href="{{ lead.url | relative_url }}">
+      <p class="item__meta">
+        <time datetime="{{ lead.date | date_to_xmlschema }}">{{ lead.date | date: "%B %-d, %Y" }}</time>
+        {% if flagged %} · Currently reading well{% endif %}
+      </p>
+      <h1 class="featured__title">{{ lead.title }}</h1>
+      <p class="featured__lede">{{ lead.lede | default: lead.excerpt | strip_html | truncate: 260 }}</p>
+      <p class="featured__more">Read this one</p>
+    </a>
+  </section>
+  {% endif %}
+
+  <section class="section">
+    <ul class="stack">
+      {% for post in site.posts limit: site.home_posts %}
+        {% unless post.url == lead.url %}
+        <li>
+          <a class="item" href="{{ post.url | relative_url }}">
+            <p class="item__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+            <h2 class="item__title">{{ post.title }}</h2>
+            <p class="item__blurb">{{ post.lede | default: post.excerpt | strip_html | truncate: 190 }}</p>
+          </a>
+        </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+
+    {% if site.posts.size > site.home_posts %}
+      <p class="more-link"><a href="{{ '/archive/' | relative_url }}">Everything else, by year</a></p>
+    {% endif %}
+  </section>
+
+</div>

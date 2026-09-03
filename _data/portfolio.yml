@@ -1,0 +1,45 @@
+# The contact sheet. Add a photo by dropping the file in assets/img/work/
+# and copying one block below. Frames render in this order.
+#
+# image:   path to the display file (long edge ~1600px is plenty)
+# full:    optional larger file for the lightbox; defaults to `image`
+# title:   what it is, in a few words
+# meta:    where and when
+# alt:     description for screen readers — write this one honestly
+# home:    true puts it in the six-frame selection on the home page
+
+- image: /assets/img/work/frame-01.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true
+
+- image: /assets/img/work/frame-02.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true
+
+- image: /assets/img/work/frame-03.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true
+
+- image: /assets/img/work/frame-04.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true
+
+- image: /assets/img/work/frame-05.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true
+
+- image: /assets/img/work/frame-06.jpg
+  title: "TODO: name the shoot"
+  meta: "TODO: place, year"
+  alt: "TODO: describe what is in the photograph"
+  home: true

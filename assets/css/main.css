@@ -1,0 +1,665 @@
+/* ==========================================================================
+   Sky Jackson — slow morning
+   Oat paper, espresso ink, walnut mats, and a little window light.
+   Softness does the work: no pure black, few hard rules, generous leading,
+   and one warm glow behind the lead photograph.
+   ========================================================================== */
+
+:root {
+  --paper:       #f5ede1; /* oat milk */
+  --paper-warm:  #efe4d4; /* ceramic */
+  --crema:       #e3d4be;
+  --ink:         #33251c; /* espresso */
+  --ink-soft:    #6b5645; /* cortado */
+  --rule:        rgba(120, 92, 66, 0.18);
+  --accent:      #8c6039;
+  --accent-deep: #6b4a2f;
+  --mat:         #3a2b21; /* walnut board */
+  --mat-soft:    #4a382c;
+  --shadow:      0 18px 40px -22px rgba(74, 52, 34, 0.55);
+  --shadow-soft: 0 10px 26px -18px rgba(74, 52, 34, 0.45);
+
+  --measure: 68ch;
+  --page-x: clamp(1.35rem, 5vw, 5rem);
+  --radius: 3px;
+
+  --step--1: 0.9rem;
+  --step-0:  1.09rem;
+  --step-1:  1.32rem;
+  --step-2:  1.72rem;
+  --step-3:  2.2rem;
+  --step-4:  clamp(2.5rem, 5.4vw, 3.7rem);
+
+  --display: "Fraunces", Georgia, serif;
+  --serif:   "Literata", Georgia, "Times New Roman", serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  line-height: 1.78;
+  font-optical-sizing: auto;
+  background-color: var(--paper);
+  /* Light coming in from the upper left, the way it does at a window table. */
+  background-image:
+    radial-gradient(120% 90% at 8% -10%, rgba(255, 250, 240, 0.95) 0%, rgba(245, 237, 225, 0) 55%),
+    radial-gradient(90% 70% at 100% 0%, rgba(227, 212, 190, 0.5) 0%, rgba(245, 237, 225, 0) 60%);
+  background-attachment: fixed;
+}
+
+/* A whisper of paper tooth over everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+body > * { position: relative; z-index: 1; }
+
+/* --- Type ---------------------------------------------------------------- */
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-variation-settings: "SOFT" 45, "WONK" 1;
+  line-height: 1.16;
+  margin: 0 0 0.55em;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--step-4); font-weight: 400; line-height: 1.08; }
+h2 { font-size: var(--step-3); margin-top: 2.2em; }
+h3 { font-size: var(--step-1); margin-top: 1.8em; }
+
+p, ul, ol, blockquote { margin: 0 0 1.2em; }
+
+a {
+  color: var(--accent-deep);
+  text-decoration-color: rgba(140, 96, 57, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+blockquote {
+  border-left: 3px solid var(--crema);
+  margin-left: 0;
+  padding-left: 1.4rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+code, pre {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.88em;
+}
+
+pre {
+  background: var(--paper-warm);
+  padding: 1.1rem 1.2rem;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule), rgba(120, 92, 66, 0) 70%);
+  margin: 3.5rem 0;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* --- Skeleton ------------------------------------------------------------ */
+
+.shell {
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: 0 var(--page-x);
+}
+
+.prose { max-width: var(--measure); }
+
+/* Sections are separated by air. Only the join carries a short faded rule,
+   so the page breathes instead of ticking. */
+.section { padding: 5rem 0; }
+
+.section + .section { position: relative; }
+
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(18rem, 40%);
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule), rgba(120, 92, 66, 0));
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.section-head h2 { margin: 0; font-size: var(--step-2); }
+.section-head a { font-size: var(--step--1); }
+
+/* --- Masthead ------------------------------------------------------------ */
+
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 1.9rem;
+  padding-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 60, "WONK" 1;
+  font-size: var(--step-2);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.15;
+}
+
+.wordmark span {
+  display: block;
+  font-family: var(--serif);
+  font-size: var(--step--1);
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+
+.nav {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.nav a:hover { background: var(--paper-warm); color: var(--ink); }
+
+.nav a[aria-current="page"] { background: var(--crema); color: var(--ink); }
+
+/* --- Page ledes and the About portrait ----------------------------------- */
+
+.page-lede {
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 44ch;
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.75rem;
+  align-items: start;
+}
+
+@media (min-width: 58rem) {
+  .about-intro { grid-template-columns: 1.15fr 0.85fr; gap: 4rem; }
+}
+
+.about-portrait { margin: 0; position: relative; padding: 0.9rem; }
+
+.about-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(70% 70% at 50% 45%, rgba(227, 212, 190, 0.85), rgba(245, 237, 225, 0) 72%);
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  filter: blur(6px);
+}
+
+.about-portrait img {
+  position: relative;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.about-portrait figcaption {
+  position: relative;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+  font-style: italic;
+}
+
+/* --- Contact sheet, on a walnut board ------------------------------------ */
+
+.sheet {
+  background: linear-gradient(168deg, var(--mat-soft), var(--mat));
+  padding: clamp(1.4rem, 3.5vw, 2.4rem);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.frames {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.frame { margin: 0; }
+
+.frame__shot {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #241a14;
+  cursor: zoom-in;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  box-shadow: var(--shadow-soft);
+}
+
+.frame__shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.frame__shot:hover img,
+.frame__shot:focus-visible img { transform: scale(1.035); }
+
+.frame__number {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--crema);
+  background: rgba(36, 26, 20, 0.6);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+}
+
+.frame__caption {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: #cdbfab;
+  margin-top: 0.7rem;
+}
+
+.frame__caption strong { font-weight: 500; color: #f2e7d6; display: block; }
+.frame__caption span { color: #a5937e; font-style: italic; }
+
+.sheet-note {
+  font-size: var(--step--1);
+  color: #a5937e;
+  margin: 2rem 0 0;
+  font-style: italic;
+}
+
+/* --- Lightbox ------------------------------------------------------------ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(37, 27, 20, 0.965);
+  display: none;
+  place-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.lightbox.is-open { display: grid; }
+
+.lightbox img {
+  max-width: min(100%, 1200px);
+  max-height: 78vh;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.lightbox__caption {
+  font-size: var(--step--1);
+  color: #cdbfab;
+  text-align: center;
+  margin-top: 1.1rem;
+  font-style: italic;
+}
+
+.lightbox__close,
+.lightbox__step {
+  position: absolute;
+  background: rgba(58, 43, 33, 0.75);
+  border: 1px solid rgba(205, 191, 171, 0.3);
+  color: #f2e7d6;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.6rem 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lightbox__close { top: 1.2rem; right: 1.2rem; }
+.lightbox__step--prev { left: 1.2rem; top: 50%; transform: translateY(-50%); }
+.lightbox__step--next { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+
+.lightbox__close:hover,
+.lightbox__step:hover { border-color: var(--crema); background: rgba(74, 56, 44, 0.9); }
+
+/* --- Résumé -------------------------------------------------------------- */
+
+.entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem 2.5rem;
+  padding: 2rem 0;
+}
+
+.entry + .entry { border-top: 1px solid var(--rule); }
+
+@media (min-width: 48rem) {
+  .entry { grid-template-columns: 11rem 1fr; padding: 2.2rem 0; }
+}
+
+.entry__when {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  padding-top: 0.5rem;
+  font-style: italic;
+}
+
+.entry__role {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 45, "WONK" 1;
+  font-size: var(--step-1);
+  font-weight: 500;
+  margin: 0 0 0.2rem;
+}
+
+.entry__org { color: var(--ink-soft); margin: 0 0 0.8rem; }
+
+.entry ul { margin: 0; padding-left: 1.15rem; }
+.entry li { margin-bottom: 0.5em; max-width: var(--measure); }
+.entry li::marker { color: var(--accent); }
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills li {
+  font-size: var(--step--1);
+  padding: 0.4rem 0.9rem;
+  background: var(--paper-warm);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+/* --- Lists of writing ---------------------------------------------------- */
+
+.stack { list-style: none; margin: 0; padding: 0; }
+
+.stack > li + li { border-top: 1px solid var(--rule); }
+
+.item {
+  display: block;
+  padding: 1.9rem 1.1rem;
+  margin: 0 -1.1rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 200ms ease;
+}
+
+a.item:hover { background: rgba(239, 228, 212, 0.6); }
+a.item:hover .item__title { color: var(--accent-deep); }
+
+.item__title {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 45, "WONK" 1;
+  font-size: var(--step-2);
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+  line-height: 1.2;
+  transition: color 200ms ease;
+}
+
+.item__meta {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.item__blurb { margin: 0 0 0.4em; max-width: var(--measure); color: var(--ink-soft); }
+.item__blurb b { color: var(--ink); font-weight: 500; }
+
+/* --- Post page ----------------------------------------------------------- */
+
+.post-head { padding: 3.5rem 0 1.2rem; }
+.post-head .item__meta { margin-bottom: 1rem; }
+.post-body { padding-bottom: 4rem; font-size: 1.13rem; }
+.post-body h2 { font-size: var(--step-2); }
+.post-body img { border-radius: var(--radius); box-shadow: var(--shadow-soft); margin: 2rem 0; }
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding: 1.8rem 0 4.5rem;
+  font-size: var(--step--1);
+}
+
+/* --- Contact ------------------------------------------------------------- */
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  max-width: 48rem;
+}
+
+.contact-list a {
+  display: block;
+  padding: 1.2rem 1.3rem;
+  text-decoration: none;
+  background: var(--paper-warm);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px var(--rule);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.contact-list a:hover {
+  box-shadow: inset 0 0 0 1px rgba(140, 96, 57, 0.45), var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.contact-list b {
+  display: block;
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 45, "WONK" 1;
+  font-weight: 500;
+  font-size: var(--step-1);
+  color: var(--ink);
+}
+
+.contact-list em { font-style: italic; color: var(--ink-soft); font-size: var(--step--1); }
+
+/* --- Colophon ------------------------------------------------------------ */
+
+.colophon {
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+  padding: 2.8rem 0 4rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.colophon a { color: var(--ink-soft); }
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.7rem 1rem;
+  z-index: 99;
+}
+
+.skip:focus { left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  .frame__shot:hover img { transform: none; }
+}
+
+/* --- The featured post, the first thing on the page ---------------------- */
+
+.featured { padding: 3.5rem 0 1rem; }
+
+.featured__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  max-width: 46rem;
+}
+
+.featured__title {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 55, "WONK" 1;
+  font-size: var(--step-4);
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 0 0 0.5rem;
+  transition: color 200ms ease;
+}
+
+.featured__link:hover .featured__title { color: var(--accent-deep); }
+
+.featured__lede {
+  font-size: var(--step-1);
+  line-height: 1.62;
+  color: var(--ink-soft);
+  margin: 0 0 1.4rem;
+}
+
+.featured__more {
+  display: inline-block;
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--accent-deep);
+  border-bottom: 1px solid rgba(140, 96, 57, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 200ms ease;
+}
+
+.featured__link:hover .featured__more { border-color: var(--accent); }
+
+.more-link {
+  margin: 2.5rem 0 0;
+  font-size: var(--step--1);
+  font-style: italic;
+}
+
+/* --- Archive ------------------------------------------------------------- */
+
+.archive-year {
+  font-size: var(--step-2);
+  margin: 3rem 0 0.75rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.archive-year:first-of-type { margin-top: 2.5rem; }
+
+.archive-list { list-style: none; margin: 0; padding: 0; max-width: 46rem; }
+
+.archive-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.archive-list a { text-decoration: none; color: var(--ink); }
+.archive-list a:hover { color: var(--accent-deep); text-decoration: underline; }
+
+.archive-list time {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* --- End of a post ------------------------------------------------------- */
+
+.post-outro {
+  max-width: var(--measure);
+  margin: 3rem 0 0;
+  padding: 1.6rem 1.8rem;
+  background: var(--paper-warm);
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 0 1px var(--rule);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}
+
+.post-outro p { margin: 0; }

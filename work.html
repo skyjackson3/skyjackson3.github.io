@@ -1,0 +1,60 @@
+---
+layout: default
+title: Work
+permalink: /work/
+nav: work
+sitemap: false
+---
+<div class="shell">
+
+  <section class="section">
+    <h1>Work</h1>
+    <p class="page-lede prose">
+      Communications work in a cabinet-level state agency: request queues,
+      editorial production, house style, accessibility, and the documentation
+      that lets any of it survive a change in staff. Below are the things I
+      built, and below those, what I've come to think about building them.
+    </p>
+  </section>
+
+  {% assign studies = site.work | where: "kind", "case study" | sort: "weight" %}
+  {% if studies.size > 0 %}
+  <section class="section">
+    <h2>Selected work</h2>
+    <ul class="stack" style="margin-top:1.5rem;">
+      {% for piece in studies %}
+        <li>
+          <a class="item" href="{{ piece.url | relative_url }}">
+            <p class="item__meta">{{ piece.org }}{% if piece.when %} · {{ piece.when }}{% endif %}</p>
+            <h3 class="item__title">{{ piece.title }}</h3>
+            <p class="item__blurb">{{ piece.blurb }}</p>
+            {% if piece.outcome %}<p class="item__blurb"><b>What happened:</b> {{ piece.outcome }}</p>{% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% assign notes = site.work | where: "kind", "note" | sort: "date" | reverse %}
+  {% if notes.size > 1 %}
+  <section class="section">
+    <h2>Notes on the work</h2>
+    <p class="page-lede prose">
+      Longer thinking about the craft — what the artifacts above don't say.
+    </p>
+    <ul class="stack" style="margin-top:1.5rem;">
+      {% for note in notes %}
+        <li>
+          <a class="item" href="{{ note.url | relative_url }}">
+            {% if note.date %}<p class="item__meta"><time datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%B %-d, %Y" }}</time></p>{% endif %}
+            <h3 class="item__title">{{ note.title }}</h3>
+            <p class="item__blurb">{{ note.blurb | default: note.excerpt | strip_html | truncate: 190 }}</p>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+</div>

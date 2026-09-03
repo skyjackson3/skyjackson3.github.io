@@ -1,0 +1,25 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+nav: archive
+---
+<div class="shell">
+  <section class="section">
+    <h1>Everything, by year</h1>
+    <p class="page-lede prose">{{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %} so far.</p>
+
+    {% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in years %}
+      <h2 class="archive-year">{{ year.name }}</h2>
+      <ul class="archive-list">
+        {% for post in year.items %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </section>
+</div>
