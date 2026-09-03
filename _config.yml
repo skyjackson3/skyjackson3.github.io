@@ -49,7 +49,6 @@ show_photographs: false
 permalink: /:year/:month/:title/
 timezone: America/Denver
 markdown: kramdown
-paginate: false
 
 plugins:
   - jekyll-feed
