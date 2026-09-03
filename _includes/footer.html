@@ -3,8 +3,17 @@
     {{ site.title }} is written by {{ site.author.name }} in {{ site.author.location }}.
     <a href="{{ '/about/' | relative_url }}">More about that</a>.
   </p>
-  <p>
-    <a href="{{ '/feed.xml' | relative_url }}">Subscribe by RSS</a> ·
-    Built with Jekyll on GitHub Pages
+  <p class="colophon__links">
+    <a href="{{ '/feed.xml' | relative_url }}">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5a1 1 0 1 0 0-.01"/><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 5a15 15 0 0 1 15 15"/></svg>RSS</a>
+    {% if site.author.linkedin != "" %}
+    <a href="{{ site.author.linkedin }}" rel="me">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10.5v6M8 7.6v.1M12 16.5v-6M16 16.5v-3.4a2.6 2.6 0 0 0-4-2.1"/></svg>LinkedIn</a>
+    {% endif %}
+    {% if site.author.email != "" %}
+    <a href="mailto:{{ site.author.email }}">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>Email</a>
+    {% endif %}
   </p>
+  <p class="colophon__fine">Built with Jekyll on GitHub Pages.</p>
 </footer>

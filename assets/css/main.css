@@ -663,3 +663,74 @@ a.item:hover .item__title { color: var(--accent-deep); }
 }
 
 .post-outro p { margin: 0; }
+
+/* ==========================================================================
+   Photographs in the flow of reading
+   Images sit on a walnut mat with a soft shadow, the way a print sits on a
+   board. Captions are quiet and set apart from the body text.
+   ========================================================================== */
+
+.post-hero,
+.prose figure {
+  margin: 2.9rem 0;
+}
+
+.post-hero img,
+.prose figure img,
+.prose > p > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--crema);
+  box-shadow: var(--shadow);
+}
+
+/* A photograph that breaks the measure and breathes wider than the text. */
+.post-hero {
+  width: min(100%, 52rem);
+  margin-inline: auto;
+}
+
+.prose figure figcaption,
+.post-hero figcaption {
+  margin-top: 0.75rem;
+  font-size: var(--step--1);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  font-style: italic;
+  text-wrap: pretty;
+}
+
+/* Two photographs side by side; stacks on small screens. */
+.prose .pair {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 34rem) {
+  .prose .pair { grid-template-columns: 1fr; }
+}
+
+/* Inline icons in the footer and meta lines. */
+.icon {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.16em;
+  margin-right: 0.36em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.colophon__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.6rem;
+}
+.colophon__fine {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+}

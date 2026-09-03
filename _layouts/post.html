@@ -10,6 +10,13 @@ layout: default
     {% if page.lede %}<p class="page-lede">{{ page.lede }}</p>{% endif %}
   </header>
 
+  {% if page.image %}
+  <figure class="post-hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" loading="eager">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
   <div class="post-body prose">
     {{ content }}
 
